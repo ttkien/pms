@@ -17,7 +17,7 @@ public class AuthenticationController {
     @Autowired
     UserRepositoryInterface userRepositoryInterface;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.GET)
+    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<UserResponse> authenticate(@RequestBody AuthencationCredentials credentials) {
 

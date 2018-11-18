@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 public class Utils {
     public  static String getHost() {
         HttpServletRequest request = getHttpServletRequest();
-        return request.getHeader("host");
+        return "http://" + request.getHeader("host");
     }
 
     public  static HttpServletRequest getHttpServletRequest() {

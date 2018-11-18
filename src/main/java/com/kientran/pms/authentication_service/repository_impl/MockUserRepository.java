@@ -5,7 +5,7 @@ import com.kientran.pms.authentication_service.repository_interfaces.UserReposit
 
 public class MockUserRepository implements UserRepositoryInterface {
     public static User DEFAULT_USER = new User(
-            1L, "user", "user", "token"
+            1L, "user", "24811cad4fd632353839d4b6c99181fdffc75ed39d4763fd56b0dad9faad03cf", "token"
     );
 
     @Override
