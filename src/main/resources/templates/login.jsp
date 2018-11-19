@@ -1,7 +1,4 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType = "text/html; charset = UTF-8" %>
 <html>
 <head>
     <title>Getting Started: Serving Web Content</title>
@@ -12,9 +9,7 @@
 
 </head>
 <body>
-
-
-<p>name: ${test} </p>
+<p>name: ${} #{}</p>
 
 Welcome to Password Management System!
 Please input user/user to pass the authentication
