@@ -2,12 +2,8 @@ package pms.web_page.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 import pms.web_page.Utils;
-import pms.web_page.services.AuthenticationServiceInterface;
-
-import java.net.URI;
+import pms.web_page.services.Authentication.AuthenticationServiceInterface;
 
 
 public class SimpleSessionManager implements SessionManager {

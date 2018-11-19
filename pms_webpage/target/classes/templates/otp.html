@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" th:src="@{/js/crypto-js/aes.js}"></script>
+    <script type="text/javascript" th:src="@{/js/crypto-js/pbkdf2.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.cookie.min.js}"></script>
+
+</head>
+<body>
+Welcome to Password Management System!
+Please otp sent to your device, please input <span th:text=${otp_value} below/>.
+<form action="otp" method="post">
+    <table>
+        <tr>
+            <td>OTP</td>
+            <td>
+                <input type="text" name="otp" id="otp">
+            </td>
+        </tr>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
