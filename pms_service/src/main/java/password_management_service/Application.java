@@ -19,14 +19,4 @@ public class Application {
 		SpringApplication.run(Application.class);
 	}
 
-	@Bean
-	public CommandLineRunner demo(PasswordRepository repository) {
-		return (args) -> {
-			// save a couple of customers
-			Password  password = new Password("user", "example.com", "password", "hash");
-			repository.save(password);
-
-		};
-	}
-
 }

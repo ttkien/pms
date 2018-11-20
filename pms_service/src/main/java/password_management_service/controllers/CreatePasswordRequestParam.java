@@ -1,35 +1,10 @@
-package password_management_service.entities;
+package password_management_service.controllers;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Password {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+class CreatePasswordRequestParam {
     private String username;
     private String domain;
     private String encryptedPassword;
     private String clearPasswordHash;
-
-    public Password(String username, String domain, String encryptedPassword, String clearPasswordHash) {
-        this.username = username;
-        this.domain = domain;
-        this.encryptedPassword = encryptedPassword;
-        this.clearPasswordHash = clearPasswordHash;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -62,7 +37,5 @@ public class Password {
     public void setClearPasswordHash(String clearPasswordHash) {
         this.clearPasswordHash = clearPasswordHash;
     }
-
-    public Password() {}
 
 }
