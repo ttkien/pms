@@ -1,4 +1,4 @@
-package com.kientran.pms.password_management_service.entities;
+package password_management_service.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +16,18 @@ public class Password {
     private String encryptedPassword;
     private String encryptedPasswordHash;
 
-    public long getId() {
+    public Password(String username, String domain, String encryptedPassword, String encryptedPasswordHash) {
+        this.username = username;
+        this.domain = domain;
+        this.encryptedPassword = encryptedPassword;
+        this.encryptedPasswordHash = encryptedPasswordHash;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

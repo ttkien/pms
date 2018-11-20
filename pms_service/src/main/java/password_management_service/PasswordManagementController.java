@@ -1,11 +1,7 @@
-package com.kientran.pms.password_management_service;
+package password_management_service;
 
-import com.kientran.pms.otp_service.repositories_interfaces.OTPRepositoryInterface;
-import com.kientran.pms.otp_service.response_models.CreatingOTPResponse;
-import com.kientran.pms.otp_service.response_models.VerifyingOTPResponse;
-import com.kientran.pms.password_management_service.entities.Password;
-import com.kientran.pms.password_management_service.repositories.PasswordRepository;
-import com.kientran.pms.password_management_service.services.PasswordService;
+import password_management_service.entities.Password;
+import password_management_service.services.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +15,7 @@ import java.util.List;
 public class PasswordManagementController {
 
 @Autowired
-    PasswordService passwordService;
+PasswordService passwordService;
 
 
     @RequestMapping(value = "/passwords", method = RequestMethod.GET)

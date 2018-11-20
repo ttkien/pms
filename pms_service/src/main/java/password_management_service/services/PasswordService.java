@@ -1,13 +1,10 @@
-package com.kientran.pms.password_management_service.services;
+package password_management_service.services;
 
-import com.kientran.pms.password_management_service.entities.Password;
-import com.kientran.pms.password_management_service.repositories.PasswordRepository;
+import password_management_service.entities.Password;
+import password_management_service.repositories.PasswordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -24,7 +21,7 @@ public class PasswordService {
         if (domain == null) {
             return passwordRepository.findByUsername(username);
         } else {
-            return passwordRepository.findByUserNameAndDomain(username, domain);
+            return passwordRepository.findByUsernameAndDomain(username, domain);
         }
     }
 
