@@ -13,17 +13,27 @@ import javax.servlet.http.HttpSession;
 
  class WebServiceDomainGetter {
 
-    private String domain = "http://localhost:8080";
+    private String pmsServiceDomain = "http://localhost:8081";
 
-    String getWebServiceDomain() {
-        return domain;
+    String getPMSServiceDomain() {
+        return pmsServiceDomain;
+     }
+
+     private String authenticationService = "http://localhost:8082";
+
+     String geAuthenticationServiceDomain() {
+         return authenticationService;
      }
 }
 
 public class Utils {
 
     public static String getWebServiceDomain() {
-        return new WebServiceDomainGetter().getWebServiceDomain();
+        return new WebServiceDomainGetter().geAuthenticationServiceDomain();
+    }
+
+    public static String getPMSServiceDomain() {
+        return new WebServiceDomainGetter().getPMSServiceDomain();
     }
 
 //    public  static String getHost() {

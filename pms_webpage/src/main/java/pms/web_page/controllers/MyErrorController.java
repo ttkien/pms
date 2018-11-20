@@ -1,4 +1,4 @@
-package pms.web_page;
+package pms.web_page.controllers;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

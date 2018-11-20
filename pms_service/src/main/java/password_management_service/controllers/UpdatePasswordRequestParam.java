@@ -4,6 +4,7 @@ class UpdatePasswordRequestParam {
     private String domain;
     private String encryptedPassword;
     private String clearPasswordHash;
+    private String domainUsername;
 
     public String getDomain() {
         return domain;
@@ -29,4 +30,11 @@ class UpdatePasswordRequestParam {
         this.clearPasswordHash = clearPasswordHash;
     }
 
+    public String getDomainUsername() {
+        return domainUsername;
+    }
+
+    public void setDomainUsername(String domainUsername) {
+        this.domainUsername = domainUsername;
+    }
 }
