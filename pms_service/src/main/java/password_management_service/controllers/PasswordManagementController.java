@@ -1,6 +1,5 @@
 package password_management_service.controllers;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import password_management_service.entities.Password;
 import password_management_service.services.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +27,14 @@ public class PasswordManagementController {
 
     @RequestMapping(value = "/passwords", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Password> createPassword(CreatePasswordRequestParam request) throws InvalidArgumentException {
+    public ResponseEntity<Password> createPassword(CreatePasswordRequestParam request) throws NullPointerException {
 
         if (request.getUsername() == null
                 || request.getDomain() == null
                 || request.getEncryptedPassword() == null
                 || request.getClearPasswordHash() == null
         ) {
-            throw new InvalidArgumentException(new String[]{"username"});
+            throw new NullPointerException();
         }
 
         Password password = new Password(
@@ -53,14 +52,14 @@ public class PasswordManagementController {
 
     @RequestMapping(value = "/passwords/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public ResponseEntity<Password> updatePassword(@PathVariable Long id, UpdatePasswordRequestParam request) throws InvalidArgumentException {
+    public ResponseEntity<Password> updatePassword(@PathVariable Long id, UpdatePasswordRequestParam request) throws NullPointerException {
 
         if (id == null
                 || request.getDomain() == null
                 || request.getEncryptedPassword() == null
                 || request.getClearPasswordHash() == null
         ) {
-            throw new InvalidArgumentException(new String[]{"username"});
+            throw new NullPointerException();
         }
 
         Password storedPassword = passwordService.getPersonById(id);
