@@ -1,7 +1,6 @@
 package pms.web_page.controllers;
 
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -85,7 +84,7 @@ public class PasswordManagementController {
     public void addPassword(
             HttpServletRequest request,
             HttpServletResponse response,
-            CreatePasswordRequestParam createPasswordRequestParam) throws InvalidArgumentException, IOException {
+            CreatePasswordRequestParam createPasswordRequestParam) throws NullPointerException, IOException {
         UserSessionData currentUser = sessionManager.currentUser();
 
         if (currentUser == null) {

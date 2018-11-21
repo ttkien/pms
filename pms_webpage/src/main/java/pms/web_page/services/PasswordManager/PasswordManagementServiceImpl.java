@@ -1,6 +1,5 @@
 package pms.web_page.services.PasswordManager;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -45,7 +44,7 @@ public class PasswordManagementServiceImpl implements PasswordManagementServiceI
     }
 
     @Override
-    public ResponseEntity<PasswordResponse> createPassword(CreatePasswordRequestParam request) throws InvalidArgumentException {
+    public ResponseEntity<PasswordResponse> createPassword(CreatePasswordRequestParam request) throws NullPointerException {
         String currentHost = Utils.getPMSServiceDomain();
 
         URI uriComponents = UriComponentsBuilder.fromHttpUrl(currentHost + "/api/passwords")
@@ -65,7 +64,7 @@ public class PasswordManagementServiceImpl implements PasswordManagementServiceI
     }
 
     @Override
-    public ResponseEntity<PasswordResponse> updatePassword(Long id, UpdatePasswordRequestParam request) throws InvalidArgumentException {
+    public ResponseEntity<PasswordResponse> updatePassword(Long id, UpdatePasswordRequestParam request) throws NullPointerException {
         String currentHost = Utils.getPMSServiceDomain();
 
         URI uriComponents = UriComponentsBuilder.fromHttpUrl(currentHost + "/api/passwords" + "/" + id)
