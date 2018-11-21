@@ -18,11 +18,11 @@ public class PasswordManagementController {
     @Autowired
     PasswordService passwordService;
 
-
     @RequestMapping(value = "/passwords", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Password>> getAll(@RequestParam String username, @RequestParam(required = false) String domain) {
 
+        domain = "".equals(domain) ? null : domain;
         return new ResponseEntity<>(passwordService.getAll(username, domain), HttpStatus.OK);
     }
 
@@ -41,6 +41,7 @@ public class PasswordManagementController {
         Password password = new Password(
                 request.getUsername(),
                 request.getDomain(),
+                request.getDomainUsername(),
                 request.getEncryptedPassword(),
                 request.getClearPasswordHash()
         );
@@ -48,7 +49,6 @@ public class PasswordManagementController {
         passwordService.saveOrUpdate(password);
 
         return new ResponseEntity<>(password, HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/passwords/{id}", method = RequestMethod.PUT)
@@ -59,6 +59,7 @@ public class PasswordManagementController {
                 || request.getDomain() == null
                 || request.getEncryptedPassword() == null
                 || request.getClearPasswordHash() == null
+                || request.getDomainUsername() == null
         ) {
             throw new InvalidArgumentException(new String[]{"username"});
         }
@@ -67,11 +68,10 @@ public class PasswordManagementController {
         storedPassword.setDomain(request.getDomain());
         storedPassword.setEncryptedPassword(request.getEncryptedPassword());
         storedPassword.setClearPasswordHash(request.getClearPasswordHash());
-
+        storedPassword.setDomainUsername(request.getDomainUsername());
         passwordService.saveOrUpdate(storedPassword);
 
         return new ResponseEntity<>(storedPassword, HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/passwords/{id}", method = RequestMethod.DELETE)
