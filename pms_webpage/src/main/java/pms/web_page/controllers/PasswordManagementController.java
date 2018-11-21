@@ -66,6 +66,19 @@ public class PasswordManagementController {
         return "passwordManagement";
     }
 
+    @RequestMapping(value = "/management/add", method = RequestMethod.GET)
+    public String showAddPassword(
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        UserSessionData currentUser = sessionManager.currentUser();
+
+        if (currentUser == null) {
+            navigateToLoginPage(response);
+        }
+
+        return "AddPassword";
+    }
+
     private void navigateToLoginPage(HttpServletResponse response) {
         try {
             response.sendRedirect("/login");
