@@ -11,6 +11,8 @@ import pms.web_page.services.Authentication.AuthenticationServiceImpl;
 import pms.web_page.services.Authentication.AuthenticationServiceInterface;
 import pms.web_page.services.OTPService.OTPServiceImpl;
 import pms.web_page.services.OTPService.OTPServiceInterface;
+import pms.web_page.services.PasswordManager.PasswordManagementServiceInterface;
+import pms.web_page.services.PasswordManager.PasswordManagementServiceImpl;
 
 @Configuration
 public class WebPageConfiguration {
@@ -32,9 +34,14 @@ public class WebPageConfiguration {
         return new AuthenticationServiceImpl();
     }
 
-
     @Bean
     public OTPServiceInterface getOTOtpServiceInterface() {
         return new OTPServiceImpl();
     }
+
+    @Bean
+    public PasswordManagementServiceInterface getPasswordManagementServiceInterface() {
+        return new PasswordManagementServiceImpl();
+    }
+
 }

@@ -1,10 +1,9 @@
-package password_management_service.controllers;
+package pms.web_page.services.PasswordManager;
 
-class CreatePasswordRequestParam {
+public class CreatePasswordRequestParam {
     private String username;
     private String domain;
     private String domainUsername;
-
     private String encryptedPassword;
     private String clearPasswordHash;
 
@@ -24,6 +23,14 @@ class CreatePasswordRequestParam {
         this.domain = domain;
     }
 
+    public String getDomainUsername() {
+        return domainUsername;
+    }
+
+    public void setDomainUsername(String domainUsername) {
+        this.domainUsername = domainUsername;
+    }
+
     public String getEncryptedPassword() {
         return encryptedPassword;
     }
@@ -38,13 +45,5 @@ class CreatePasswordRequestParam {
 
     public void setClearPasswordHash(String clearPasswordHash) {
         this.clearPasswordHash = clearPasswordHash;
-    }
-
-    public String getDomainUsername() {
-        return domainUsername;
-    }
-
-    public void setDomainUsername(String domainUsername) {
-        this.domainUsername = domainUsername;
     }
 }

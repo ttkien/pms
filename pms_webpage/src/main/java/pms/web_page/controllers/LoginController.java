@@ -1,4 +1,4 @@
-package pms.web_page;
+package pms.web_page.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

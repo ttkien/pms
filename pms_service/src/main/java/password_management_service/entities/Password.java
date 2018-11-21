@@ -13,14 +13,17 @@ public class Password {
 
     private String username;
     private String domain;
+    private String domainUsername;
+
     private String encryptedPassword;
     private String clearPasswordHash;
 
-    public Password(String username, String domain, String encryptedPassword, String clearPasswordHash) {
+    public Password(String username, String domain, String domainUsername, String encryptedPassword, String clearPasswordHash) {
         this.username = username;
         this.domain = domain;
         this.encryptedPassword = encryptedPassword;
         this.clearPasswordHash = clearPasswordHash;
+        this.domainUsername = domainUsername;
     }
 
     public Long getId() {
@@ -61,6 +64,14 @@ public class Password {
 
     public void setClearPasswordHash(String clearPasswordHash) {
         this.clearPasswordHash = clearPasswordHash;
+    }
+
+    public String getDomainUsername() {
+        return domainUsername;
+    }
+
+    public void setDomainUsername(String domainUsername) {
+        this.domainUsername = domainUsername;
     }
 
     public Password() {}
