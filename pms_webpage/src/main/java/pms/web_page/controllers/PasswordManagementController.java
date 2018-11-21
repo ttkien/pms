@@ -1,6 +1,7 @@
 package pms.web_page.controllers;
 
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import pms.web_page.security.UserSessionData;
 import pms.web_page.services.Authentication.AuthenticationServiceInterface;
 import pms.web_page.services.OTPService.OTPServiceInterface;
 import pms.web_page.services.OTPService.VerifyingOTPResponse;
+import pms.web_page.services.PasswordManager.CreatePasswordRequestParam;
 import pms.web_page.services.PasswordManager.PasswordManagementServiceInterface;
 import pms.web_page.services.PasswordManager.PasswordResponse;
 
@@ -79,6 +81,22 @@ public class PasswordManagementController {
         return "AddPassword";
     }
 
+    @RequestMapping(value = "/management/add", method = RequestMethod.POST)
+    public void addPassword(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            CreatePasswordRequestParam createPasswordRequestParam) throws InvalidArgumentException, IOException {
+        UserSessionData currentUser = sessionManager.currentUser();
+
+        if (currentUser == null) {
+            navigateToLoginPage(response);
+        }
+        createPasswordRequestParam.setUsername(currentUser.getUsername());
+        ResponseEntity<PasswordResponse> password = passwordManagementServiceInterface.createPassword(createPasswordRequestParam);
+        response.sendRedirect("/");
+
+    }
+
     private void navigateToLoginPage(HttpServletResponse response) {
         try {
             response.sendRedirect("/login");
@@ -89,61 +107,3 @@ public class PasswordManagementController {
     }
 }
 
-class PasswordModel {
-    public String id;
-
-    public String username;
-    public String domain;
-    public String domainUsername;
-
-    public String encryptedPassword;
-    public String clearPasswordHash;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public String getDomainUsername() {
-        return domainUsername;
-    }
-
-    public void setDomainUsername(String domainUsername) {
-        this.domainUsername = domainUsername;
-    }
-
-    public String getEncryptedPassword() {
-        return encryptedPassword;
-    }
-
-    public void setEncryptedPassword(String encryptedPassword) {
-        this.encryptedPassword = encryptedPassword;
-    }
-
-    public String getClearPasswordHash() {
-        return clearPasswordHash;
-    }
-
-    public void setClearPasswordHash(String clearPasswordHash) {
-        this.clearPasswordHash = clearPasswordHash;
-    }
-}

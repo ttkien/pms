@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script type="text/javascript" th:src="@{/js/crypto-js/aes.js}"></script>
     <script type="text/javascript" th:src="@{/js/crypto-js/pbkdf2.js}"></script>
+    <script type="text/javascript" th:src="@{/js/Encrypt_Decrypt.js}"></script>
+
     <!--<script type="text/javascript" th:src="@{/js/jquery.cookie.min.js}"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -43,6 +45,19 @@ Please input user/user to pass the authentication
         clearEncryptKeyFromCookie();
     });
 
+    // Encrypt
+    var ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123');
+
+    // Decrypt
+    var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
+    var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+
+    console.log(plaintext);
+
+    var key = "aaa";
+    var ecrypted = encryptWithKey("kien", key);
+    var clearText = decryptPasswordWithKey(ecrypted, key);
+
     function beforeSubmit() {
         var password = document.getElementById("password").value ;
         var username = document.getElementById("username").value ;
@@ -51,55 +66,10 @@ Please input user/user to pass the authentication
         document.getElementById("passwordHash").value = passwordHash;
 
         var encryptKey = createEncryptKey(password, username);
-        setEncryptKeyFromCookie(encryptKey);
+        storeEncryptedKey(encryptKey);
     }
 
-    function hash(message, salt) {
-        var iterations = 100;
-        var userHash = CryptoJS.PBKDF2(message, salt, { keySize: 256/32, iterations: iterations });
 
-        return userHash.toString();
-    }
-
-    function createEncryptKey(password, username) {
-        return hash(password, username);
-    }
-
-    function createPasswordHash(password, username) {
-        return hash(hash(password, username), username);
-    }
-
-    function clearEncryptKeyFromCookie() {
-        eraseCookie("EncryptKey")
-    }
-
-    function setEncryptKeyFromCookie(key) {
-        setCookie(key);
-    }
-
-    function setCookie(name,value,days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    function eraseCookie(name) {
-        document.cookie = name+'=; Max-Age=-99999999;';
-    }
 
 </script>
 </body>

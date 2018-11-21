@@ -49,7 +49,12 @@ public class PasswordManagementServiceImpl implements PasswordManagementServiceI
         String currentHost = Utils.getPMSServiceDomain();
 
         URI uriComponents = UriComponentsBuilder.fromHttpUrl(currentHost + "/api/passwords")
-                .queryParam("request", request)
+                .queryParam("username", request.getUsername())
+                .queryParam("domain", request.getDomain())
+                .queryParam("domainUsername", request.getDomainUsername())
+                .queryParam("encryptedPassword", request.getEncryptedPassword())
+                .queryParam("clearPasswordHash", request.getClearPasswordHash())
+
                 .build().toUri();
 
         HttpHeaders headers = new HttpHeaders();

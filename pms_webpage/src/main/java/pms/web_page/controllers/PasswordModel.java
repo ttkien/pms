@@ -1,11 +1,22 @@
-package pms.web_page.services.PasswordManager;
+package pms.web_page.controllers;
 
-public class CreatePasswordRequestParam {
-    private String username;
-    private String domain;
-    private String domainUsername;
-    private String encryptedPassword;
-    private String clearPasswordHash;
+public class PasswordModel {
+    public String id;
+
+    public String username;
+    public String domain;
+    public String domainUsername;
+
+    public String encryptedPassword;
+    public String clearPasswordHash;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
