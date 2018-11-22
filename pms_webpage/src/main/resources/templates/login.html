@@ -1,22 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script type="text/javascript" th:src="@{/js/crypto-js/aes.js}"></script>
     <script type="text/javascript" th:src="@{/js/crypto-js/pbkdf2.js}"></script>
     <script type="text/javascript" th:src="@{/js/Encrypt_Decrypt.js}"></script>
-
-    <!--<script type="text/javascript" th:src="@{/js/jquery.cookie.min.js}"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" />
 </head>
 <body>
+
+<div class="mainContent">
+    <h2 style="text-align: center">
 Welcome to Password Management System!
-Please input user/user to pass the authentication
+    </h2>
+    <p style="text-align: center;">Please input user/user to pass the authentication</p>
 <form action="login" method="post" onsubmit="return beforeSubmit()">
     <input type="hidden" name="passwordHash" id="passwordHash" value=""/>
-    <table>
+    <table style="margin: auto;">
         <tr>
             <td>Username</td>
             <td>
@@ -38,25 +40,13 @@ Please input user/user to pass the authentication
 
     </table>
 </form>
+</div>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
         // - Code to execute when all DOM content is loaded.
         // - including fonts, images, etc.
         clearEncryptKeyFromCookie();
     });
-
-    // Encrypt
-    var ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123');
-
-    // Decrypt
-    var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
-    var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-
-    console.log(plaintext);
-
-    var key = "aaa";
-    var ecrypted = encryptWithKey("kien", key);
-    var clearText = decryptPasswordWithKey(ecrypted, key);
 
     function beforeSubmit() {
         var password = document.getElementById("password").value ;
@@ -68,8 +58,6 @@ Please input user/user to pass the authentication
         var encryptKey = createEncryptKey(password, username);
         storeEncryptedKey(encryptKey);
     }
-
-
 
 </script>
 </body>

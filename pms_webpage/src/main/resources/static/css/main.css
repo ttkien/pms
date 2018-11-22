@@ -1,0 +1,31 @@
+
+.mainContent {
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 200px;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+input[type=text], input[type=password] {
+    width: 200px;
+    height: 24px;
+    padding-left: 8x;
+}
+
+button {
+
+    height: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: large;
+
+}
+
+td {
+    padding :8px;
+}
