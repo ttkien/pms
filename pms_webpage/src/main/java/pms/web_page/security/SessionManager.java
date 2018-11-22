@@ -7,4 +7,6 @@ public interface SessionManager {
     UserSessionData getUserWithToken(String token);
     Boolean isLogged();
     UserSessionData currentUser();
+
+    void clearSession();
 }

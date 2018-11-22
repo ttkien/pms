@@ -142,4 +142,15 @@ model.addAttribute("otp_value", otp);
     }
 
 
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    public void clearSession(HttpServletRequest request, HttpServletResponse response, Model model) {
+        UserSessionData currentUser = sessionManager.currentUser();
+
+        if (currentUser != null) {
+            sessionManager.clearSession();
+        }
+
+        navigateToLoginPage(response);
+    }
+
 }

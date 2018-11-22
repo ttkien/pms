@@ -55,4 +55,9 @@ public class SimpleSessionManager implements SessionManager {
         return (UserSessionData) Utils.getSession().getAttribute("user");
 
     }
+
+    @Override
+    public void clearSession() {
+        Utils.getSession().removeAttribute("user");
+    }
 }
