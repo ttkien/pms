@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
 
  class WebServiceDomainGetter {
 
-    private String pmsServiceDomain = "http://localhost:8081";
+    private String pmsServiceDomain = "http://127.0.0.1:8081";
 
     String getPMSServiceDomain() {
         return pmsServiceDomain;
      }
 
-     private String authenticationService = "http://localhost:8082";
+     private String authenticationService = "http://127.0.0.1:8082";
 
      String geAuthenticationServiceDomain() {
          return authenticationService;

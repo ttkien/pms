@@ -15,7 +15,7 @@ public class SimpleSessionManager implements SessionManager {
     public void setSessionWithToken(String token) {
         UserSessionData userSessionData = getUserWithToken(token);
         if (userSessionData != null) {
-            Utils.getSession().setAttribute("user", userSessionData);
+            saveSessionData(userSessionData);
         }
     }
 
@@ -23,8 +23,12 @@ public class SimpleSessionManager implements SessionManager {
     public void setSessionWithToken(UserResponse userResponse) {
         UserSessionData userSessionData = getUserSessionData(userResponse);
         if (userSessionData != null) {
-            Utils.getSession().setAttribute("user", userSessionData);
+            saveSessionData(userSessionData);
         }
+    }
+
+    private void saveSessionData(UserSessionData userSessionData) {
+        Utils.getSession().setAttribute("user", userSessionData);
     }
 
     @Override
@@ -47,7 +51,8 @@ public class SimpleSessionManager implements SessionManager {
 
     @Override
     public Boolean isLogged() {
-        return currentUser() != null;
+        return currentUser() != null
+                && currentUser().getVerifiedOTP();
     }
 
     @Override
@@ -59,5 +64,15 @@ public class SimpleSessionManager implements SessionManager {
     @Override
     public void clearSession() {
         Utils.getSession().removeAttribute("user");
+    }
+
+    @Override
+    public void setVerifedOTP(boolean isVerified) {
+        UserSessionData user = currentUser();
+        if (user == null) {
+        }
+
+        user.setVerifiedOTP(isVerified);
+        saveSessionData(user);
     }
 }

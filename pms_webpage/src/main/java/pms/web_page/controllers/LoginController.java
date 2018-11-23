@@ -127,10 +127,10 @@ model.addAttribute("otp_value", otp);
 
         }
 
-
         VerifyingOTPResponse verifyingOTPResponse = otpServiceInterface.verifyOTP(currentUser.getToken(), otp).getBody();
 
         if (verifyingOTPResponse.getVerify() == true) {
+            sessionManager.setVerifedOTP(true);
     navigateToPasswordManagement(response);
         } else {
             try {
