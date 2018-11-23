@@ -9,4 +9,5 @@ public interface SessionManager {
     UserSessionData currentUser();
 
     void clearSession();
+    void setVerifedOTP(boolean isVerified);
 }

@@ -3,12 +3,6 @@ package pms.web_page.security;
 public class UserSessionData {
     private Long id;
 
-    public UserSessionData(Long id, String username, String token) {
-        this.id = id;
-        this.username = username;
-        this.token = token;
-    }
-
     public Long getId() {
         return id;
     }
@@ -35,4 +29,20 @@ public class UserSessionData {
 
     private String username;
     private String token;
+
+    public Boolean getVerifiedOTP() {
+        return isVerifiedOTP;
+    }
+
+    public void setVerifiedOTP(Boolean verifiedOTP) {
+        isVerifiedOTP = verifiedOTP;
+    }
+
+    private Boolean isVerifiedOTP = false;
+    public UserSessionData(Long id, String username, String token) {
+        this.id = id;
+        this.username = username;
+        this.token = token;
+    }
+
 }

@@ -29,8 +29,6 @@ public class OTPServiceImpl implements OTPServiceInterface {
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
 
         return restTemplate.exchange(uriComponents, HttpMethod.POST, entity, CreatingOTPResponse.class);
-
-
     }
 
     @Override
